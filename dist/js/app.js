@@ -117,7 +117,6 @@ function onGetResponse(err, res) {
     //show empty message 
     return; 
   }
-  console.log(res)
   renderNews(res.articles);
 }
 
@@ -153,7 +152,7 @@ function newsTemplate({ urlToImage, title, url, description }) {
     <div class="col s12">
       <div class="card">
         <div class="card-image">
-          <img src="${urlToImage}">
+          <img src="${urlToImage || 'https://www.meme-arsenal.com/memes/751beaf0189e29da3ae95421dbe07025.jpg'}">
           <span class="card-title">${title || ''}</span> 
         </div>
         <div class="card-content">
