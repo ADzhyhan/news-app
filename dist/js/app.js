@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //load news function 
 function loadNews() {
+  showLoader();
+
   const country = countrySelect.value; 
   const searchText = searchInput.value;
 
@@ -102,6 +104,8 @@ function loadNews() {
 
 //function on get response from server 
 function onGetResponse(err, res) {
+  removeLoader();
+
   if(err) {
     showAlert(err, 'error-msg'); 
     return;
@@ -163,4 +167,24 @@ function newsTemplate({ urlToImage, title, url, description }) {
 
 function showAlert(msg, type ='success') {
   M.toast({ html: msg, classes: type });
+} 
+
+//show loader function 
+function showLoader() {
+  document.body.insertAdjacentHTML('afterbegin', 
+    `
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    `
+  );
+} 
+
+//remove loader function 
+function removeLoader() {
+  const loader = document.querySelector('.progress'); 
+
+  if(loader) {
+    loader.remove();
+  }
 }
