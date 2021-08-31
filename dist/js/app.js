@@ -114,7 +114,7 @@ function onGetResponse(err, res) {
   }
 
   if(!res.articles.length) {
-    //show empty message 
+    showAlert('No news was found for your query :(', 'error-msg'); 
     return; 
   }
   renderNews(res.articles);
